@@ -1,12 +1,11 @@
 set nocompatible
 filetype off
-
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
 let g:go_play_open_browser = 1
-
+sdfd
 
 set foldmethod=manual
 
@@ -38,5 +37,10 @@ set scrolloff=10
 colorscheme gruvbox
 set background=dark
 
+
+"""inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-x><C-o>
+
+inoremap <C-z> <Esc>:w<CR>
 
 
