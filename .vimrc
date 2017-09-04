@@ -5,7 +5,6 @@ syntax on
 filetype plugin indent on
 
 let g:go_play_open_browser = 1
-sdfd
 
 set foldmethod=manual
 
@@ -41,6 +40,7 @@ set background=dark
 """inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
 
+nnoremap <C-z> <Esc>:w<CR>
 inoremap <C-z> <Esc>:w<CR>
 
-
+au BufRead,BufNewFile *.asm set filetype=nasm
