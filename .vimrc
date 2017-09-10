@@ -1,5 +1,9 @@
 set nocompatible
 filetype off
+
+
+let mapleader=","
+
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -8,7 +12,18 @@ let g:go_play_open_browser = 1
 
 set foldmethod=manual
 
+" settings for vim-go
+map <C-n> :cnext<CR> 
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+let g:go_fmt_command="goimports"
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
 
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
 set wildmenu
 set showcmd
@@ -39,8 +54,32 @@ set background=dark
 
 """inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-x><C-o>
-
+nnoremap <leader>q <Esc>:wq!<CR>
 nnoremap <C-z> <Esc>:w<CR>
 inoremap <C-z> <Esc>:w<CR>
+nnoremap <C-j> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+
+nnoremap <leader>s :ls<CR>
+
+" parenthsis
+let delimitMate_expand_cr = 1
 
 au BufRead,BufNewFile *.asm set filetype=nasm
+
+" ctags
+set tags=./tags;/
+
+" set for c++
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
+let &path.="/usr/include/,"
+
+
+" nerdtree
+map <F2> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=25
