@@ -63,6 +63,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 
 nnoremap <leader>s :ls<CR>
+nnoremap <leader>f :%!astyle<CR> 
 
 " parenthsis
 let delimitMate_expand_cr = 1
@@ -83,3 +84,7 @@ let &path.="/usr/include/,"
 " nerdtree
 map <F2> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=25
+
+
+" autoformat
+autocmd BufNewFile,BufRead *.cpp set formatprg=astyle\ -T4pb
