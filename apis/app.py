@@ -5,6 +5,7 @@ import locations.intellij as intellij
 import locations.pycharm as pycharm
 import locations.goland as goland
 
+
 def pull(remote_path, app_type, local_path=None):
     if local_path is None:
         local_path = path.basename(remote_path).split('-')[1]
@@ -28,14 +29,14 @@ class AppType:
             self.settings_path = vscode.settings_path
             self.shortcuts_path = vscode.shortcuts_path
         elif self.apptype == 'intellij':
-            self.settings_path = intellij.settings_path 
-            self.shortcuts_path = intellij.shortcuts_path 
+            self.settings_path = intellij.settings_path
+            self.shortcuts_path = intellij.shortcuts_path
         elif self.apptype == 'pycharm':
-            self.settings_path = pycharm.settings_path 
-            self.shortcuts_path = pycharm.shortcuts_path 
+            self.settings_path = pycharm.settings_path
+            self.shortcuts_path = pycharm.shortcuts_path
         elif self.apptype == 'goland':
-            self.settings_path = goland.settings_path 
-            self.shortcuts_path = goland.shortcuts_path 
+            self.settings_path = goland.settings_path
+            self.shortcuts_path = goland.shortcuts_path
         else:
             raise Exception('apptype wrong (vscode/intellj/pycharm/goland)')
 
@@ -49,9 +50,11 @@ class AppType:
                 raise Exception("type_: setting/keybinding")
         else:
             if type_ == 'setting':
-                pull(self.settings_path, self.apptype, self.settings_path)
+                pull(path.join("/share", "%s-%s" % (self.apptype,
+                                                    path.basename(self.settings_path))), self.apptype, self.settings_path)
             elif type_ == 'keybinding':
-                pull(self.shortcuts_path, self.apptype, self.shortcuts_path)
+                pull(path.join("/share", "%s-%s" % (self.apptype,
+                                                    path.basename(self.settings_path))), self.apptype, self.shortcuts_path)
             else:
                 raise Exception("action: push/pull")
 

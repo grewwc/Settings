@@ -32,8 +32,6 @@ parsed = parser.parse_args()
 parsed_dict = vars(parsed)
 
 
-
-
 for k, v in parsed_dict.items():
     if v:
         k = k.lstrip('-')
