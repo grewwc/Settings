@@ -23,8 +23,6 @@ class TransferFile:
 
     def download(self):
         _, resp = self.sync.files_download(self.remote_file_name)
+        print("writing to %s" % self.local_file_name)
         with open(self.local_file_name, 'wb') as f:
             f.write(resp.content)
-
-
-
