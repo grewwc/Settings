@@ -44,5 +44,5 @@ for k, v in parsed_dict.items():
                 getattr(app, func_name)()
         else:
             app = app_type_dict[app_type]
-            func_name = '_'.join([action, file_type])
+            func_name = '_'.join([action, *file_type])
             getattr(app, func_name)()
