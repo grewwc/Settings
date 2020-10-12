@@ -54,7 +54,7 @@ class AppType:
                                                     path.basename(self.settings_path))), self.apptype, self.settings_path)
             elif type_ == 'keybinding':
                 pull(path.join("/share", "%s-%s" % (self.apptype,
-                                                    path.basename(self.settings_path))), self.apptype, self.shortcuts_path)
+                                                    path.basename(self.shortcuts_path))), self.apptype, self.shortcuts_path)
             else:
                 raise Exception("action: push/pull")
 
